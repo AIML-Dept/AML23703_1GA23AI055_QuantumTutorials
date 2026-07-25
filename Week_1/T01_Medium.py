@@ -1,9 +1,3 @@
-"""
-Tutorial No. : T01 | Date: 23-07-2026 | Level: Medium
-Objective    : 1-qubit Hadamard circuit, measure, 1024 shots, plot histogram.
-USN          : 1GA23AI055
-"""
-
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram

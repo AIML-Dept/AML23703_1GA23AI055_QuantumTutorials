@@ -1,12 +1,3 @@
-"""
-Tutorial No.   : T01
-Date           : 23-07-2026
-Objective      : 3-qubit equal superposition, verify uniform 1/8 distribution.
-Student Name   : <YOUR NAME>
-USN            : 1GA23AI055
-Level          : Hard
-"""
-
 from qiskit import QuantumCircuit, transpile
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
