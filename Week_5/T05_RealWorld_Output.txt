@@ -1,9 +1,0 @@
-   Shots |  P(|1>) est. | theta est. (rad) |  abs error (rad)
------------------------------------------------------------------
-     100 |       0.8900 |           2.4655 |           0.0340
-    1000 |       0.8580 |           2.3689 |           0.0626
-   10000 |       0.8831 |           2.4437 |           0.0122
-   50000 |       0.8819 |           2.4400 |           0.0085
-
-True theta (revealed for verification): 2.4315 rad (139.31 deg)
-Observation: the estimate of theta gets closer to the true value as shot count increases, same statistical-convergence principle as Exercise 1.
