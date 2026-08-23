@@ -1,0 +1,7 @@
+State |+> measured in X-basis over 2000 shots -> counts: {'0': 2000}
+State |-> measured in X-basis over 2000 shots -> counts: {'1': 2000}
+
+Interpretation:
+- |+> measured in the X-basis should collapse (near) deterministically to outcome '0'.
+- |-> measured in the X-basis should collapse (near) deterministically to outcome '1'.
+- Any small deviation from 100%/0% is purely simulator shot noise, since these are exact eigenstates of the X operator.

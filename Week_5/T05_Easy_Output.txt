@@ -1,0 +1,7 @@
+   Shots |                       Counts |   P(|1>) |  |P - 0.5|
+-----------------------------------------------------------------
+     100 |           {'1': 43, '0': 57} |   0.4300 |     0.0700
+    1000 |         {'1': 487, '0': 513} |   0.4870 |     0.0130
+   10000 |       {'1': 5065, '0': 4935} |   0.5065 |     0.0065
+
+Observation: as shot count increases, |P - 0.5| shrinks, illustrating the Law of Large Numbers / shot-noise scaling (~1/sqrt(N)).
