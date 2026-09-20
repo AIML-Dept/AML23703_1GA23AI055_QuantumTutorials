@@ -1,0 +1,10 @@
+Deutsch's Algorithm - Generic Oracle-Selection Test
+
+   Function type      Expected    Measured    Classified   Match  
+------------------------------------------------------------------
+     constant_0       constant       0         constant     True  
+     constant_1       constant       0         constant     True  
+ balanced_identity    balanced       1         balanced     True  
+    balanced_not      balanced       1         balanced     True  
+
+All four oracle types classified correctly: True

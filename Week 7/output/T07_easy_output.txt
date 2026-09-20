@@ -1,0 +1,6 @@
+Deutsch's Algorithm - Constant Function f(x) = 0
+
+Measurement counts: {'0': 1024}
+Measured qubit value: 0
+Function classified as: constant
+Expected: constant  |  Match: True

@@ -1,0 +1,23 @@
+
+Conceptual mapping: Deutsch's phase kickback -> binary classification
+
+1. INPUT ENCODING
+   A data point's feature is encoded into the input qubit's superposition
+   state (analogous to |x> = alpha|0> + beta|1>).
+
+2. ORACLE = CLASSIFIER FUNCTION
+   The oracle Uf represents a trained decision function f(x) that outputs
+   a binary class label (0 or 1) for each possible input state.
+
+3. PHASE KICKBACK
+   Because the ancilla qubit is prepared in the |-> state before the oracle
+   acts, the classifier's output f(x) is not written to a separate output
+   register - it is 'kicked back' as a phase (-1)^f(x) onto the input
+   qubit's own amplitude, without collapsing the superposition.
+
+4. INTERFERENCE = DECISION READOUT
+   A final Hadamard gate on the input qubit converts this phase difference
+   into a measurable amplitude difference. Measuring the qubit then reveals
+   the classification outcome (constant-like vs balanced-like decision
+   boundary) in a single query, instead of needing to evaluate f explicitly
+   for every possible input as a classical classifier would.

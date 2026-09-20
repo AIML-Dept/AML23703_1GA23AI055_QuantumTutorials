@@ -1,0 +1,6 @@
+Deutsch's Algorithm - Balanced Function f(x) = x
+
+Measurement counts: {'1': 1024}
+Measured qubit value: 1
+Function classified as: balanced
+Expected: balanced  |  Match: True
