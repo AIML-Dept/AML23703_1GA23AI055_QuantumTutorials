@@ -1,0 +1,14 @@
+Simon oracle truth table for secret string s = 110
+
+   x      f(x)  
+------------------
+  000     000   
+  001     001   
+  010     100   
+  011     101   
+  100     100   
+  101     101   
+  110     000   
+  111     001   
+
+Oracle correctness verified: True
