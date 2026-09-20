@@ -1,0 +1,14 @@
+Deutsch-Jozsa Algorithm - Generalised for n = 2 to 5
+
+ n   Function type    Measured    Classified   Match  
+------------------------------------------------------
+ 2      constant         00        constant     True  
+ 2      balanced         11        balanced     True  
+ 3      constant        000        constant     True  
+ 3      balanced        111        balanced     True  
+ 4      constant        0000       constant     True  
+ 4      balanced        1111       balanced     True  
+ 5      constant       00000       constant     True  
+ 5      balanced       11111       balanced     True  
+
+All cases classified correctly: True

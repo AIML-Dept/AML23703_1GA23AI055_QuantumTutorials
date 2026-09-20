@@ -1,0 +1,6 @@
+Deutsch-Jozsa Algorithm - Balanced Parity Function, n = 3
+
+Measurement counts: {'111': 1024}
+Measured bitstring: 111
+Function classified as: balanced
+Expected: balanced  |  Match: True

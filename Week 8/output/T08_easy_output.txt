@@ -1,0 +1,6 @@
+Deutsch-Jozsa Algorithm - Constant Function f(x) = 0, n = 3
+
+Measurement counts: {'000': 1024}
+Measured bitstring: 000
+Function classified as: constant
+Expected: constant  |  Match: True
