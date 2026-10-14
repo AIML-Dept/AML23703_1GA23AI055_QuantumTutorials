@@ -1,0 +1,61 @@
+==================================================================
+ TUTORIAL 9 | EXERCISE 2 (MEDIUM): All Four Bell States
+==================================================================
+
+--- Phi+ = (|00> + |11>)/sqrt(2) ---
+     ┌───┐     
+q_0: ┤ H ├──■──
+     └───┘┌─┴─┐
+q_1: ─────┤ X ├
+          └───┘
+Statevector amplitudes : |00>:+0.707  |01>:+0.000  |10>:+0.000  |11>:+0.707
+Counts                 : {'00': 515, '11': 509}
+<ZZ> correlation       : +1.000  (qubits AGREE)
+
+--- Phi- = (|00> - |11>)/sqrt(2) ---
+     ┌───┐┌───┐     
+q_0: ┤ X ├┤ H ├──■──
+     └───┘└───┘┌─┴─┐
+q_1: ──────────┤ X ├
+               └───┘
+Statevector amplitudes : |00>:+0.707  |01>:+0.000  |10>:+0.000  |11>:-0.707
+Counts                 : {'00': 526, '11': 498}
+<ZZ> correlation       : +1.000  (qubits AGREE)
+
+--- Psi+ = (|01> + |10>)/sqrt(2) ---
+     ┌───┐     
+q_0: ┤ H ├──■──
+     ├───┤┌─┴─┐
+q_1: ┤ X ├┤ X ├
+     └───┘└───┘
+Statevector amplitudes : |00>:+0.000  |01>:+0.707  |10>:+0.707  |11>:+0.000
+Counts                 : {'01': 509, '10': 515}
+<ZZ> correlation       : -1.000  (qubits DISAGREE)
+
+--- Psi- = (|01> - |10>)/sqrt(2) ---
+     ┌───┐┌───┐     
+q_0: ┤ X ├┤ H ├──■──
+     ├───┤└───┘┌─┴─┐
+q_1: ┤ X ├─────┤ X ├
+     └───┘     └───┘
+Statevector amplitudes : |00>:+0.000  |01>:-0.707  |10>:+0.707  |11>:+0.000
+Counts                 : {'01': 526, '10': 498}
+<ZZ> correlation       : -1.000  (qubits DISAGREE)
+
+==================================================================
+ COMPARISON TABLE  (1024 shots each, counts and probability)
+==================================================================
+State             00          01          10          11      <ZZ>
+------------------------------------------------------------------
+Phi+      515 (0.50)    0 (0.00)    0 (0.00)  509 (0.50)    +1.000
+Phi-      526 (0.51)    0 (0.00)    0 (0.00)  498 (0.49)    +1.000
+Psi+        0 (0.00)  509 (0.50)  515 (0.50)    0 (0.00)    -1.000
+Psi-        0 (0.00)  526 (0.51)  498 (0.49)    0 (0.00)    -1.000
+
+Key observations:
+  * Phi+ and Phi- both give only 00/11 -> identical in the Z basis.
+  * Psi+ and Psi- both give only 01/10 -> identical in the Z basis.
+  * The +/- relative phase is invisible to a Z-basis measurement;
+    it only shows up in a different basis (see Exercise 3).
+  * Psi- prints as -|01> + |10>: this is (|01> - |10>)/sqrt(2) times a
+    global phase of -1, which has no physical effect.

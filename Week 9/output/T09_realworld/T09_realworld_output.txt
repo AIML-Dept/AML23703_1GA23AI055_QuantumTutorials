@@ -1,0 +1,112 @@
+======================================================================
+ TUTORIAL 9 | EXERCISE 4 (REAL-WORLD): Entanglement-based QKD
+======================================================================
+
+Circuit for one round (Alice=q0, Bob=q1), example: Alice X, Bob X
+     ┌───┐     ┌───┐┌─┐   
+q_0: ┤ H ├──■──┤ H ├┤M├───
+     └───┘┌─┴─┐├───┤└╥┘┌─┐
+q_1: ─────┤ X ├┤ H ├─╫─┤M├
+          └───┘└───┘ ║ └╥┘
+c: 3/════════════════╩══╩═
+                     0  1 
+
+Same round with Eve intercepting Bob's qubit in the Z basis:
+     ┌───┐     ┌───┐     ┌─┐   
+q_0: ┤ H ├──■──┤ H ├─────┤M├───
+     └───┘┌─┴─┐└┬─┬┘┌───┐└╥┘┌─┐
+q_1: ─────┤ X ├─┤M├─┤ H ├─╫─┤M├
+          └───┘ └╥┘ └───┘ ║ └╥┘
+c: 3/════════════╩════════╩══╩═
+                 2        0  1 
+
+----------------------------------------------------------------------
+ SCENARIO: No eavesdropper
+----------------------------------------------------------------------
+First 12 rounds:
+    #  A basis  B basis  A bit  B bit  kept?
+    0        Z        X      0      1  no
+    1        X        X      1      1  yes
+    2        X        X      1      1  yes
+    3        Z        Z      1      1  yes
+    4        Z        X      1      1  no
+    5        X        Z      0      1  no
+    6        X        X      1      1  yes
+    7        X        Z      0      0  no
+    8        X        X      1      1  yes
+    9        X        X      1      1  yes
+   10        X        Z      0      0  no
+   11        X        Z      0      1  no
+
+Pairs sent                     : 2000
+Rounds with matching bases     : 1001 (50.0%, ~50% expected)
+Bits sacrificed for QBER test  : 500
+Estimated QBER                 : 0.00%
+Final key length               : 501 bits
+Alice key (first 32)           : 10110101111000100000110001100010
+Bob key   (first 32)           : 10110101111000100000110001100010
+Decision (QBER threshold 11%)  : SECURE - keep key
+
+----------------------------------------------------------------------
+ SCENARIO: With Eve (intercept-resend)
+----------------------------------------------------------------------
+First 12 rounds:
+    #  A basis  B basis  A bit  B bit  kept?
+    0        Z        Z      1      1  yes
+    1        Z        X      1      0  no
+    2        Z        X      1      1  no
+    3        X        X      0      0  yes
+    4        X        X      0      1  yes
+    5        X        X      0      0  yes
+    6        Z        X      1      0  no
+    7        X        X      0      0  yes
+    8        X        Z      0      1  no
+    9        Z        Z      0      0  yes
+   10        X        Z      0      1  no
+   11        X        Z      0      1  no
+
+Pairs sent                     : 2000
+Rounds with matching bases     : 969 (48.5%, ~50% expected)
+Bits sacrificed for QBER test  : 484
+Estimated QBER                 : 24.59%
+Final key length               : 485 bits
+Alice key (first 32)           : 01001011110001000101011111100101
+Bob key   (first 32)           : 01000111110001010101011110100110
+Decision (QBER threshold 11%)  : ABORT - eavesdropper detected
+
+----------------------------------------------------------------------
+ CHSH ENTANGLEMENT CHECK  (classical limit |S| <= 2, quantum max 2.828)
+----------------------------------------------------------------------
+
+No eavesdropper:
+  E(a,b) = +0.714
+  E(a,b') = +0.709
+  E(a',b) = +0.710
+  E(a',b') = -0.707
+  S = 2.840  -> violates classical bound: genuine entanglement
+
+With Eve (intercept-resend):
+  E(a,b) = +0.359
+  E(a,b') = +0.352
+  E(a',b) = +0.349
+  E(a',b') = -0.343
+  S = 1.403  -> within classical bound: entanglement destroyed
+
+(Note: S comes from finite shots, so it can land slightly above or
+ below the ideal 2.828 because of statistical shot noise.)
+
+======================================================================
+ SUMMARY
+======================================================================
+Scenario                            QBER    CHSH S   Result
+No eavesdropper                    0.00%     2.840   key accepted
+With Eve (intercept-resend)       24.59%     1.403   key rejected
+
+How entanglement secures the channel:
+  * Phi+ gives identical results when Alice and Bob use the same basis,
+    in Z AND in X, so the matched rounds form a shared random key.
+  * The key does not exist until it is measured, so there is nothing
+    for Eve to copy in transit, and no-cloning stops her duplicating the qubit.
+  * If Eve measures, she breaks the entanglement: errors appear in the
+    basis she guessed wrong (~25% QBER) and S drops to the classical range.
+  * Alice and Bob detect this publicly and discard the key.

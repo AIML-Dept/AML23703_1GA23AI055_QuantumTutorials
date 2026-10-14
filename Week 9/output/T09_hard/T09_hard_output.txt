@@ -1,0 +1,54 @@
+======================================================================
+ TUTORIAL 9 | EXERCISE 3 (HARD): Bell Pairs in the Hadamard Basis
+======================================================================
+
+[A] Phi+ measured in the Z basis vs the X (Hadamard) basis
+
+Z-basis circuit:
+        ┌───┐      ░ ┌─┐   
+   q_0: ┤ H ├──■───░─┤M├───
+        └───┘┌─┴─┐ ░ └╥┘┌─┐
+   q_1: ─────┤ X ├─░──╫─┤M├
+             └───┘ ░  ║ └╥┘
+meas: 2/══════════════╩══╩═
+                      0  1 
+
+X-basis circuit (H on both qubits before measurement):
+        ┌───┐     ┌───┐ ░ ┌─┐   
+   q_0: ┤ H ├──■──┤ H ├─░─┤M├───
+        └───┘┌─┴─┐├───┤ ░ └╥┘┌─┐
+   q_1: ─────┤ X ├┤ H ├─░──╫─┤M├
+             └───┘└───┘ ░  ║ └╥┘
+meas: 2/═══════════════════╩══╩═
+                           0  1 
+
+Z basis counts : {'00': 515, '11': 509}   E_ZZ = +1.000
+X basis counts : {'00': 515, '11': 509}   E_XX = +1.000
+-> Phi+ = (|++> + |-->)/sqrt(2): the qubits agree in BOTH bases.
+
+[B] Correlation of all four Bell states in different bases
+
+State         E_ZZ      E_XX      E_ZX   X-basis counts
+----------------------------------------------------------------------
+Phi+        +1.000    +1.000    -0.053   {'00': 515, '11': 509}
+Phi-        +1.000    -1.000    -0.008   {'01': 526, '10': 498}
+Psi+        -1.000    +1.000    -0.053   {'00': 526, '11': 498}
+Psi-        -1.000    -1.000    -0.008   {'01': 526, '10': 498}
+
+Reading the table:
+  * Phi+ : agree in Z (+1), agree in X (+1)
+  * Phi- : agree in Z (+1), DISAGREE in X (-1)  <- the minus sign shows up
+  * Psi+ : disagree in Z (-1), agree in X (+1)
+  * Psi- : disagree in Z (-1), disagree in X (-1)  (anti-correlated in every basis)
+  * Mixed bases (Z on one, X on the other): E ~ 0, no correlation at all.
+  * Phi+/Phi- looked identical in Exercise 2 (Z basis); the X basis
+    tells them apart. Same for Psi+/Psi-.
+
+[C] Classical look-alike: a source that sends |00> or |11> at random
+    (50/50 classical mixture - no entanglement, no superposition)
+    ZZ basis counts : {'00': 512, '11': 512}   E = +1.000
+    XX basis counts : {'00': 246, '01': 242, '10': 267, '11': 269}   E = +0.006
+-> The classical mixture copies Phi+ perfectly in the Z basis (E=+1),
+   but in the X basis the correlation vanishes (E~0).
+   Phi+ stays perfectly correlated (E=+1) in X too. Correlation that
+   survives a change of basis is the fingerprint of entanglement.
