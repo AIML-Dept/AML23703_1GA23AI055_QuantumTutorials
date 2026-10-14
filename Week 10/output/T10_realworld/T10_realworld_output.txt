@@ -1,0 +1,39 @@
+========================================================================
+ TUTORIAL 10 | EXERCISE 4 (REAL-WORLD): 100-Message Bandwidth Study
+========================================================================
+
+Session: 100 random 2-bit messages = 200 classical bits of information
+Message mix : '00' x 27, '01' x 26, '10' x 21, '11' x 26
+First 10    : 11 11 01 00 11 11 10 00 11 10
+
+[1] Simulated transmission of the full session
+    Ideal channel            : 100/100 messages decoded correctly
+    Bit-flip p = 0.05 (session 1): 92/100 messages decoded correctly, 8 bit errors out of 200
+    First 10 decoded (ideal): 11 11 01 00 11 11 10 00 11 10
+    First 10 decoded (noisy): 11 11 01 00 11 11 10 00 11 10
+
+    Noisy session repeated 200 times (p = 0.05):
+    Wrong messages per session : mean 5.09, min 0, max 12  (expected 5)
+    Sessions with zero errors  : 4 / 200
+
+[2] Bandwidth comparison for the session
+Quantity                                       Classical   Superdense
+---------------------------------------------------------------------
+Information delivered (bits)                         200          200
+Carriers sent during the session                200 bits   100 qubits
+Bits delivered per carrier sent                        1            2
+Pre-shared resource needed beforehand               none    100 ebits
+Total carriers incl. pre-sharing                     200          200
+---------------------------------------------------------------------
+Channel uses during the session: 200 -> 100 (50% fewer)
+Total including ebit distribution: 200 -> 200 (no net saving)
+
+Summary:
+  * During the session superdense coding halves the traffic: 100 qubits
+    carry the 200 bits, because each qubit delivers 2 bits.
+  * The cost is paid in advance: 100 entangled pairs must be shared
+    before the session, so the total number of carriers is still 200.
+  * The gain is useful when the session channel is the bottleneck and
+    ebits can be distributed earlier, e.g. during off-peak time.
+  * Real channels add noise: at p = 0.05, about 5.1 of 100 messages
+    arrive wrong per session on average, so error correction would be needed.

@@ -1,0 +1,58 @@
+========================================================================
+ TUTORIAL 10 | EXERCISE 2 (MEDIUM): Superdense Coding, all 4 messages
+========================================================================
+
+--- Message '00' | Alice applies I ---
+     ┌───┐      ░ ┌───┐ ░      ┌───┐
+q_0: ┤ H ├──■───░─┤ I ├─░───■──┤ H ├
+     └───┘┌─┴─┐ ░ └───┘ ░ ┌─┴─┐└───┘
+q_1: ─────┤ X ├─░───────░─┤ X ├─────
+          └───┘ ░       ░ └───┘     
+State after encoding : +0.707|00>  +0.707|11>   (= Phi+)
+Counts               : {'00': 1024}
+Decoded message      : 00  -> CORRECT
+
+--- Message '01' | Alice applies Z ---
+     ┌───┐      ░ ┌───┐ ░      ┌───┐
+q_0: ┤ H ├──■───░─┤ Z ├─░───■──┤ H ├
+     └───┘┌─┴─┐ ░ └───┘ ░ ┌─┴─┐└───┘
+q_1: ─────┤ X ├─░───────░─┤ X ├─────
+          └───┘ ░       ░ └───┘     
+State after encoding : +0.707|00>  -0.707|11>   (= Phi-)
+Counts               : {'01': 1024}
+Decoded message      : 01  -> CORRECT
+
+--- Message '10' | Alice applies X ---
+     ┌───┐      ░ ┌───┐ ░      ┌───┐
+q_0: ┤ H ├──■───░─┤ X ├─░───■──┤ H ├
+     └───┘┌─┴─┐ ░ └───┘ ░ ┌─┴─┐└───┘
+q_1: ─────┤ X ├─░───────░─┤ X ├─────
+          └───┘ ░       ░ └───┘     
+State after encoding : +0.707|01>  +0.707|10>   (= Psi+)
+Counts               : {'10': 1024}
+Decoded message      : 10  -> CORRECT
+
+--- Message '11' | Alice applies X then Z (ZX) ---
+     ┌───┐      ░ ┌───┐┌───┐ ░      ┌───┐
+q_0: ┤ H ├──■───░─┤ X ├┤ Z ├─░───■──┤ H ├
+     └───┘┌─┴─┐ ░ └───┘└───┘ ░ ┌─┴─┐└───┘
+q_1: ─────┤ X ├─░────────────░─┤ X ├─────
+          └───┘ ░            ░ └───┘     
+State after encoding : -0.707|01>  +0.707|10>   (= Psi-)
+Counts               : {'11': 1024}
+Decoded message      : 11  -> CORRECT
+
+========================================================================
+ DECODING TABLE (1024 shots per message)
+========================================================================
+Sent  Alice gate      Bell state  Decoded    Correct   Accuracy
+---------------------------------------------------------------
+00    I               Phi+        00            1024    100.00%
+01    Z               Phi-        01            1024    100.00%
+10    X               Psi+        10            1024    100.00%
+11    X then Z (ZX)   Psi-        11            1024    100.00%
+---------------------------------------------------------------
+Overall: 4096 / 4096 shots decoded correctly (100.00%)
+Each message: 2 classical bits delivered by sending 1 qubit.
+Note: Psi- prints as -|01> + |10>, i.e. (|01> - |10>)/sqrt(2) times a
+global phase of -1, which has no physical effect.
